@@ -1,10 +1,11 @@
 {
 	"name": "babel-plugin-transform-hook-names",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Babel plugin to add hook names for Preact devtools",
 	"main": "src/index.js",
 	"scripts": {
-		"test": "mocha -r ts-node/register --extension js,ts,tsx test/*.test.ts"
+		"test": "mocha -r ts-node/register --extension js,ts,tsx test/*.test.ts",
+		"prepublishOnly": "npm test"
 	},
 	"keywords": [
 		"babel",

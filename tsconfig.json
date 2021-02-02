@@ -1,9 +1,10 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "dist/",
-    "allowJs": true
-  }
+	"compilerOptions": {
+		"strict": true,
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"outDir": "dist/",
+		"allowJs": true,
+		"esModuleInterop": true
+	}
 }

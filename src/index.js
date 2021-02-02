@@ -1,4 +1,4 @@
-export default function ({ types: t, template }) {
+module.exports = function ({ types: t, template }) {
 	const libs = ["preact/hooks", "preact/compat", "react"];
 	const helper = template`addHookName(CALL, NAME)`;
 
@@ -37,4 +37,4 @@ export default function ({ types: t, template }) {
 			},
 		},
 	};
-}
+};

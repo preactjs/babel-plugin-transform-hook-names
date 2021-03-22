@@ -1,6 +1,6 @@
 {
 	"name": "babel-plugin-transform-hook-names",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Babel plugin to add hook names for Preact devtools",
 	"main": "src/index.js",
 	"scripts": {

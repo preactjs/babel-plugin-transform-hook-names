@@ -42,6 +42,7 @@ function Foo() {
 	const [text, setText] = useState("hello");
 	const [counter, increment] = useReducer(c => c + 1, 0);
 	const rootElement = useRef();
+	const memo = useMemo(() => text.toUpperCase(), ["text"]);
 }
 ```
 
@@ -58,6 +59,10 @@ function Foo() {
 		"counter",
 	);
 	const rootElement = addHookName(useRef(), "rootElement");
+	const memo = addHookName(
+		useMemo(() => text.toUpperCase(), ["text"]),
+		"memo",
+	);
 }
 ```
 

@@ -10,6 +10,8 @@ After:
 
 ![Screenshot of Preact devtools with this plugin](./screenshot-after.png)
 
+Requires: Babel >= 7.12
+
 ## Usage
 
 Install `babel-plugin-transform-hook-names` in your project:
@@ -65,6 +67,10 @@ function Foo() {
 	);
 }
 ```
+
+## Requirements
+
+
 
 ## License
 

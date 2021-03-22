@@ -177,4 +177,45 @@ function Foo() {
   const date = addHookName(useState(Date.now()), "date");
 }`);
 	});
+
+	it("detect hook name if ArrayPattern is transpiled", async () => {
+		const output = await transformAsync(
+			`import { useState, useReducer, useRef } from 'preact/hooks';
+
+function Foo() {
+  var _useState = useState(0),
+    foo = _useState[0],
+    setFoo = _useState[1];
+  var _useReducer = useReducer(0),
+    bar = _useReducer[0],
+    setBar = _useReducer[1];
+  var _useRef = useRef([]),
+    baz = _useRef[0],
+    setBaz = _useRef[1];
+  var _useRef2 = useRef([]);
+}
+		`,
+			{ plugins: [plugin] },
+		);
+
+		expect(output!.code).to
+			.equal(`import { addHookName } from "preact/devtools";
+import { useState, useReducer, useRef } from 'preact/hooks';
+
+function Foo() {
+  var _useState = addHookName(useState(0), "foo"),
+      foo = _useState[0],
+      setFoo = _useState[1];
+
+  var _useReducer = addHookName(useReducer(0), "bar"),
+      bar = _useReducer[0],
+      setBar = _useReducer[1];
+
+  var _useRef = addHookName(useRef([]), "useRef"),
+      baz = _useRef[0],
+      setBaz = _useRef[1];
+
+  var _useRef2 = addHookName(useRef([]), "useRef");
+}`);
+	});
 });

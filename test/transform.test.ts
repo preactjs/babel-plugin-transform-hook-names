@@ -153,4 +153,28 @@ function Foo() {
   useMemo(() => text.toUpperCase(), ['text']);
 }`);
 	});
+
+	it("should let other plugins traverse wrapped hook", async () => {
+		const output = await transformAsync(
+			`import { useState, useReducer, useRef } from 'preact/hooks';
+
+function Foo() {
+  const date = useState<number>(Date.now());
+}
+		`,
+			{
+				filename: "foo.tsx",
+				plugins: [plugin],
+				presets: [require.resolve("@babel/preset-typescript")],
+			},
+		);
+
+		expect(output!.code).to
+			.equal(`import { addHookName } from "preact/devtools";
+import { useState } from 'preact/hooks';
+
+function Foo() {
+  const date = addHookName(useState(Date.now()), "date");
+}`);
+	});
 });

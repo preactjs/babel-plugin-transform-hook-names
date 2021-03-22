@@ -28,7 +28,6 @@ module.exports = function ({ types: t, template }) {
 				const firstBinding = p[pathKeys[0]];
 
 				state.helper = true;
-				path.skip();
 				path.replaceWith(
 					helper({
 						CALL: t.clone(path.node),

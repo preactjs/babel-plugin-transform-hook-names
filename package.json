@@ -24,6 +24,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.12.10",
+		"@babel/preset-typescript": "^7.13.0",
 		"@types/babel__core": "^7.1.12",
 		"@types/chai": "^4.2.14",
 		"@types/mocha": "^8.2.0",

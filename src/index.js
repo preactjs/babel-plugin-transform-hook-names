@@ -18,7 +18,8 @@ module.exports = function ({ types: t, template }) {
 				const callee = path.get("callee");
 
 				if (!callee.isIdentifier()) return;
-				if (!/^(useState|useReducer|useRef)$/.test(callee.node.name)) return;
+				if (!/^(useState|useReducer|useRef|useMemo)$/.test(callee.node.name))
+					return;
 				if (!libs.some(lib => callee.referencesImport(lib))) return;
 
 				const p = path.parentPath.getOuterBindingIdentifierPaths();
